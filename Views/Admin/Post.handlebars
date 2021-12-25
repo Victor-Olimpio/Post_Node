@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Posts</title>
+        <style>
+            .title-page {
+                padding-left: 0;
+                padding-right: 0;
+                padding-bottom: 0;
+                padding-top: 1.5rem;
+            }
+
+            .card-body {
+                display: block;
+            }
+
+            form {
+                display: inline;
+            }
+
+            #button-new {
+                position: absolute;
+
+                bottom: 1.0rem;
+                margin-left: 0.5rem;
+
+
+                width: 3.0rem;
+                border: 0.1rem solid #262A2E;
+            }
+
+            #button-edit {
+                width: 3.0rem;
+            }
+
+            #button-close {
+                position: absolute;
+
+                width: 3.0rem;
+                bottom: 12px;
+                margin-right: 5.5rem;
+            }
+
+            #button-edit,
+            #button-new-two {
+                border: 0.1rem solid #262A2E;
+            }
+
+            #button-new-three,
+            #button-close {
+                width: 5rem;
+                border: 0.1rem solid #262A2E;
+            }
+
+            #button-new:hover,
+            #button-new-two:hover,
+            #button-edit:hover,
+            #button-new-three:hover,
+            #button-close:hover {
+                transition: .5s ease all;
+
+                color: #343A40;;
+                background-color: #FFFFFF;
+            }
+
+            #button-edit:not(:hover),
+            #button-new:not(:hover),
+            #button-new-two:not(:hover),
+            #button-new-three:not(:hover),
+            #button-close:not(:hover) {
+                transition: .5s ease all;
+
+                color: #FFFFFF;
+                background-color: #343A40;;
+            }
+
+            .title-information {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+
+                padding: 0.5rem;
+
+                color: #FFFFFF;
+                background-color: #343A40;;
+            }
+
+            .category-post {
+
+                font-size: 0.9rem;
+                font-weight: bold;
+
+                padding: 0.5rem;
+                margin-top: 0.3rem;
+                margin-left: 0.5rem;
+
+                border-radius: 0.5rem;
+                background-color: #1B1E21;
+            }
+
+            .bar-title {
+                padding-left: 1.0rem;
+
+                font-weight: normal;
+            }
+
+            small {
+                padding-left: 1.0rem;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1 class="title-page">Posts</h1>
+        <hr class="line-page">
+
+        <a href="/admin/posts/add"><button id="button-new-two" class="btn btn-success mt-2">New Post</button></a>
+
+        {{#each posts}}
+            <div class="card mt-3">
+                <div class="title-information">
+                    <h3>{{title}}</h3>
+                    <h3 class="bar-title">|</h3>
+                    <small><strong>{{formtDate date}}</strong></small>
+                    <h3 class="bar-title">|</h3>
+                    <h3 class="category-post">{{category.name}}</h4>
+                </div>
+                <div class="card-body">
+                    <p class="mt-2">Slug: <strong>{{slug}}</strong></p>
+                    <hr>
+                    <p class="mt-2">{{description}}</p>
+                    <hr>
+
+                    <a href="/admin/posts/edit/{{_id}}"><button id="button-edit" class="btn btn-success mt-2"><i class="fas fa-pen"></i></button></a>
+
+                    <form action="/admin/posts/delete" method="post">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <button id="button-new" class="btn btn-suceess"><i class="fas fa-trash"></i></button>
+                    </form>
+                </div>
+            </div>
+            {{else}}
+            <h4 class="mt-4">No post registered...</h4>
+        {{/each}}
+    </body>
+</html>

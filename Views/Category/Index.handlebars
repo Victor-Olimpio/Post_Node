@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .title-page {
+                padding-left: 0;
+                padding-right: 0;
+                padding-bottom: 0;
+                padding-top: 1.5rem;
+            }
+
+            .card-body {
+                display: block;
+            }
+
+            .title-information {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+
+                padding: 0.5rem;
+
+                color: #FFFFFF;
+                background-color: #343A40;
+            }
+
+            .category-link {
+                color: #FFFFFF;
+                text-decoration: none;
+            }
+
+            .category-link:hover {
+                transition: .5s ease all;
+                color: #272c30;
+            }
+
+            .category-link:not(:hover) {
+                transition: .5s ease all;
+
+                color:#FFFFFF;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="title-page">Categories</h1>
+        <hr class="line-page">
+        
+        {{#each categories}}
+            <div class="card mt-3">
+                <div class="title-information">
+                <a href="/categories/{{slug}}" class="category-link"><h3>{{name}}</h3></a>
+                </div>
+            </div>
+        {{else}}
+            <h4 class="mt-4">No category registered...</h4>
+        {{/each}}
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add - Categorie</title>
+        <style>
+            .title-page {
+                padding-left: 0;
+                padding-right: 0;
+                padding-bottom: 0;
+                padding-top: 1.5rem;
+
+                text-align: center;
+            }
+
+            form label {
+                padding: 0.5rem;
+                padding-left: 0;
+
+                font-weight: bold;
+            }
+
+            form 
+            input#name,
+            input#slug {
+                padding: 0.8rem;
+            }
+
+            form #button-create {
+                padding: 0.7rem;
+
+                font-weight: bold;
+                font-size: 1.10rem;
+                border: 0.1rem solid #FFFFFFAF;
+            }
+
+            form #button-create:hover {
+                transition: .5s ease all;
+
+                color: #343A40;
+                background-color: #FFFFFF;
+            }
+
+            form #button-create:not(:hover) {
+                transition: .5s ease all;
+
+                color: #FFFFFF;
+                background-color: #343A40;
+            }
+        </style>
+    </head>
+    <body>
+        {{#each errorsFound}}
+            <div class="alert alert-danger">{{error}}</div>
+            {{else}}
+        {{/each}}
+        <h1 class="title-page">Edit Category</h1>
+        <hr class="line-page">
+
+        <div class="card">
+            <div class="card-body">
+                <form action="/admin/categories/edit" method="post">
+                    <input type="hidden" name="id" value="{{category._id}}">
+
+                    <label for="name">Category Name</label>
+                    <input type="text" name="name" id="name" class="form-control" value="{{category.name}}">
+
+                    <label for="description">Category Slug</label>
+                    <input type="text" name="slug" id="slug" class="form-control" value="{{category.slug}}">
+
+                    <button id="button-create" class="btn btn-success mt-4 form-control">Save Category</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

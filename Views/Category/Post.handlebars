@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #button-new {
+                border: 0.1rem solid #262A2E;
+            }
+
+            #button-new:hover,
+            #button-primary:hover {
+                transition: .5s ease all;
+
+                color: #343A40;
+                background-color: #FFFFFF;
+            }
+
+            #button-new:not(:hover),
+            #button-primary:not(:hover) {
+                transition: .5s ease all;
+
+                color: #FFFFFF;
+                background-color: #343A40;
+            }
+
+            .title-information {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+
+                padding: 0.5rem;
+
+                color: #FFFFFF;
+                background-color: #343A40;
+            }
+            .bar-title {
+                padding-left: 1.0rem;
+
+                font-weight: normal;
+            }
+            small {
+                padding-left: 1.0rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>{{category.name}}</h1>
+        {{#each posts}}
+            <div class="card mt-3">
+                <div class="title-information">
+                    <h3>{{title}}</h3>
+                    <h3 class="bar-title">| </h3>
+                    <small><strong>{{formtDate date}}</strong></small>
+                </div>
+                <div class="card-body">
+                    <p class="mt-2">{{description}}</p>
+                    <hr>
+                    <a href="/posts/{{slug}}"><button id="button-new" class="btn btn-success">Read More</button></a>
+                </div>
+            </div>
+        {{else}}
+            <h4 class="mt-4">No post recorded...</h4>
+        {{/each}}
+    </body>
+</html>

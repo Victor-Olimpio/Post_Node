@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .title-page {
+                padding-left: 0;
+                padding-right: 0;
+                padding-bottom: 0;
+                padding-top: 1.5rem;
+
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="title-page">{{post.title}}</h1>
+        <hr class="line-page">
+
+        <div class="card">
+            <div class="card-body">
+                <strong>{{formtDate date}}</strong>
+                <hr>
+            </div>
+            <div class="card-body">
+                {{post.content}}
+            </div>
+        </div>
+    </body>
+</html>

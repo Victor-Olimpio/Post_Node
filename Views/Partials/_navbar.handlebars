@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            button#button-search {
+                color: #FFFFFF;
+                border: 0.1rem solid #FFFFFFAF;
+            }
+
+            button#button-search:hover {
+                transition: .5s ease all;
+
+                color: #343A40;
+                background-color: #FFFFFF;
+            }
+
+            button#button-search:not(:hover) {
+                transition: .5s ease all;
+
+                color: #FFFFFF;
+            }
+
+            #name-profile {
+                margin-left: -0.7rem;
+                cursor: default;
+            }
+
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Developer JS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {{#if user}}
+                        <li class="nav-item">
+                            <a class="nav-link disable" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/categories" class="nav-link disable">Categories</a>
+                        </li>
+                        {{#each user}}
+                        <li class="nav-item">
+                            <a id="name-profile"  class="nav-link disable">{{name}}</a>
+                        </li>
+                        {{/each}}
+                        <li class="nav-item">
+                            <a href="/logout" class="nav-link disable">Log Out</a>
+                        </li>
+                    {{else}}
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link disable">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/register" class="nav-link disable">Sign Up</a>
+                        </li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+        </nav>
+    </body>
+</html>

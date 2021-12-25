@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add - Post</title>
+        <style>
+            .title-page {
+                padding-left: 0;
+                padding-right: 0;
+                padding-bottom: 0;
+                padding-top: 1.5rem;
+
+                text-align: center;
+            }
+
+            form label {
+                padding: 0.5rem;
+                padding-left: 0;
+
+                font-weight: bold;
+            }
+
+            form 
+            input#title,
+            input#slug,
+            input#description,
+            input#content {
+                padding: 0.8rem;
+            }
+
+            form #button-create {
+                padding: 0.7rem;
+
+                font-weight: bold;
+                font-size: 1.10rem;
+                border: 0.1rem solid #FFFFFFAF;
+            }
+
+            form #button-create:hover {
+                transition: .5s ease all;
+
+                color: #343A40;
+                background-color: #FFFFFF;
+            }
+
+            form #button-create:not(:hover) {
+                transition: .5s ease all;
+
+                color: #FFFFFF;
+                background-color: #343A40;
+            }
+        </style>
+    </head>
+    <body>
+        {{#each errorsFound}}
+            <div class="alert alert-danger">{{error}}</div>
+            {{else}}
+        {{/each}}
+        <h1 class="title-page">New Post</h1>
+        <hr class="line-page">
+
+        <div class="card">
+            <div class="card-body">
+                <form action="/admin/posts/new" method="post">
+                    <label for="title">Post Title</label>
+                    <input type="text" name="title" id="title" class="form-control">
+
+                    <label for="slug">Post Slug</label>
+                    <input type="text" name="slug" id="slug" class="form-control">
+
+                    <label for="description">Post Description</label>
+                    <input type="text" name="description" id="description" class="form-control">
+
+                    <label for="content">Post Content</label>
+                    <textarea name="content" id="content" class="form-control"></textarea>
+
+                    <label for="category">Post Category</label>
+                    <select name="category" id="category" class="custom-select form-control">
+                        {{#each categories}}
+                            <option value="{{_id}}">{{name}}</option>
+                        {{else}}
+                            <option value="0">No category registered</option>
+                        {{/each}}
+                    </select>
+
+                    <button id="button-create" class="btn btn-success mt-5 form-control">Creates Post</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

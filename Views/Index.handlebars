@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            .title-page {
+                padding-left: 0;
+                padding-right: 0;
+                padding-bottom: 0;
+                padding-top: 1.5rem;
+            }
+
+            #button-new {
+                border: 0.1rem solid #262A2E;
+            }
+
+            #button-new:hover,
+            #button-primary:hover {
+                transition: .5s ease all;
+
+                color: #343A40;
+                background-color: #FFFFFF;
+            }
+
+            #button-new:not(:hover),
+            #button-primary:not(:hover) {
+                transition: .5s ease all;
+
+                color: #FFFFFF;
+                background-color: #343A40;
+            }
+
+            .title-information {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+
+                padding: 0.5rem;
+
+                color: #FFFFFF;
+                background-color: #343A40;
+            }
+
+            .bar-title {
+                padding-left: 1.0rem;
+
+                font-weight: normal;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome to <strong>Developer JS</strong></h1>
+            <p class="lead">With short and simple moves, share ideas about your
+                favorite technologies in the developing world!
+            </p>
+            <hr class="my-4">
+            <p class="lead">
+                <a id="button-new" class="btn btn-success btn-lg" href="/register" role="button">Create your account</a>
+            </p>
+        </div>
+        <h1 class="mt-5">Recent Posts</h1>
+        {{#each posts}}
+            <div class="card mt-3">
+                <div class="title-information">
+                    <h3>{{title}}</h3>
+                </div>
+                <div class="card-body">
+                    <p class="mt-2">{{description}}</p>
+                    <hr>
+                    <a href="/posts/{{slug}}"><button id="button-new" class="btn btn-success">Read More</button></a>
+                </div>
+            </div>
+        {{else}}
+            <h4 class="mt-4">No post recorded...</h4>
+        {{/each}}
+    </body>
+</html>

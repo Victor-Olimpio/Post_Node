@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Developer JS - Login</title>
+        <style>
+            .title-page {
+                text-align: center;
+            }
+
+            form label {
+                padding: 0.5rem;
+                padding-left: 0;
+
+                font-weight: bold;
+            }
+
+            form 
+            input#name,
+            input#email,
+            input#password,
+            input#password-two {
+                padding: 0.8rem;
+            }
+
+            form #button-create {
+                padding: 0.7rem;
+
+                font-weight: bold;
+                font-size: 1.10rem;
+                border: 0.1rem solid #262A2E;
+            }
+
+            form #button-create:hover {
+                transition: .5s ease all;
+
+                color: #343A40;
+                background-color: #FFFFFF;
+            }
+
+            form #button-create:not(:hover) {
+                transition: .5s ease all;
+
+                color: #FFFFFF;
+                background-color: #343A40;
+            }
+        </style>
+    </head>
+    <body>
+        {{#each errorRegister}}
+            <div class="alert alert-danger">{{errorRegister}}</div>
+        {{else}}
+        {{/each}}
+        <h1 class="title-page mt-2">Log In</h1>
+        <div class="card mt-3">
+            <div class="card-body">
+                <form action="/login/done" method="post">
+                    <label for="email">Email Address</label>
+                    <input type="text" name="email" id="email" class="form-control">
+
+                    <label for="password" >User Password</label>
+                    <input type="password" name="password" id="password" class="form-control">
+
+                    <button id="button-create" class="btn btn-success mt-4 form-control">Log In</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
